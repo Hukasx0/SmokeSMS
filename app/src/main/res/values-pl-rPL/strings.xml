@@ -5,6 +5,6 @@
     <string name="base_alpha">Tylko base64 jest dostępny w wersji alfa</string>
     <string name="send_encrypted_message">Wyślij zaszyfrowaną wiadomość</string>
     <string name="tutorial1">Cześć! Tu SmokeSMS. Wygląda na to, że nie rozpocząłeś/rozpoczęłaś konwersacji z tym kontaktem, więc skorzystam z tego i dam Ci mały poradnik: Jeżeli widzisz zaszyfrowaną wiadomość, po prostu na nią kliknij aby ją odszyfrować. Jedną tego typu wiadomość zostawiłem Ci na samym dole</string>
-    <string name="tutorial2">repozytorium projektu: https://github.com/Hukasx0/LINK</string>
+    <string name="tutorial2">repozytorium projektu: https://github.com/Hukasx0/SmokeSMS</string>
     <string name="tutorial3">Q3plxZvEhywgamFrIHNpxJkgbWFzej8=</string>
 </resources>

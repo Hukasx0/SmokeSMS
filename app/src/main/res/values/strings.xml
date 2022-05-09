@@ -4,6 +4,6 @@
     <string name="base_alpha">Only base64 is available in alpha version</string>
     <string name="send_encrypted_message">Send encrypted message</string>
     <string name="tutorial1">Hi! This is SmokeSMS. It looks like you haven\'t started a conversation with this contact, so I\'ll take advantage of this and give you a little tutorial: If you see an encrypted message, just click on it to decrypt it. I left one such message at the bottom</string>
-    <string name="tutorial2">project repository: https://github.com/Hukasx0/LINK</string>
+    <string name="tutorial2">project repository: https://github.com/Hukasx0/SmokeSMS</string>
     <string name="tutorial3">SGVsbG8sIGhvdyBhcmUgeW91Pw==</string>
 </resources>

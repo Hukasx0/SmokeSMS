@@ -5,6 +5,6 @@
     <string name="base_alpha">В альфа-версии доступен только base64.</string>
     <string name="send_encrypted_message">Отправить зашифрованное сообщение</string>
     <string name="tutorial1">Привет! Это СмоукСМС. Похоже, вы еще не начали беседу с этим контактом, поэтому я воспользуюсь этим и дам вам небольшую инструкцию: если вы видите зашифрованное сообщение, просто нажмите на него, чтобы расшифровать. Я оставил одно такое сообщение внизу</string>
-    <string name="tutorial2">репозиторий проекта: https://github.com/Hukasx0/LINK</string>
+    <string name="tutorial2">репозиторий проекта: https://github.com/Hukasx0/SmokeSMS</string>
     <string name="tutorial3">0J/RgNC40LLQtdGCLCDQutCw0Log0LTQtdC70LA/</string>
 </resources>
