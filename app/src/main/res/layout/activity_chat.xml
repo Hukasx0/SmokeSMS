@@ -6,6 +6,13 @@
     tools:context=".Chat"
     android:orientation="horizontal">
 
+    <ImageView
+        android:id="@+id/Background"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType = "centerCrop"
+        />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/Recycler_View"
         android:layout_above="@+id/linearLayout"

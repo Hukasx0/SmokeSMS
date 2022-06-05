@@ -55,7 +55,7 @@ class MainActivity : AppCompatActivity() {
         ) {
             ActivityCompat.requestPermissions(
                 this@MainActivity,
-                arrayOf(Manifest.permission.READ_CONTACTS,Manifest.permission.READ_SMS,Manifest.permission.SEND_SMS),
+                arrayOf(Manifest.permission.READ_CONTACTS,Manifest.permission.READ_SMS,Manifest.permission.SEND_SMS,Manifest.permission.READ_EXTERNAL_STORAGE),
                 permissionCode
             )
         }
@@ -89,7 +89,6 @@ class MainActivity : AppCompatActivity() {
         val adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, contactsName)
         listView.adapter = adapter
         listView.setOnItemClickListener { adapterView, view, i, l ->
-            //Toast.makeText(this,contactsNums[i],Toast.LENGTH_SHORT).show()
             val intent = Intent(this@MainActivity,Chat::class.java)
             intent.putExtra("username",contactsName[i])
             intent.putExtra("phoneNumber",contactsNums[i])

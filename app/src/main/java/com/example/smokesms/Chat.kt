@@ -1,19 +1,22 @@
 package com.example.smokesms
 
 import android.content.Intent
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.telephony.SmsManager
-import android.util.Base64
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.EditText
 import android.widget.ImageView
-import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import java.io.File
+import java.io.FileInputStream
+import com.example.smokesms.Encryption as Encryption
 
 class Chat : AppCompatActivity(), MessagesAdapter.onItemClickListener {
     //
@@ -24,6 +27,7 @@ class Chat : AppCompatActivity(), MessagesAdapter.onItemClickListener {
     private var isSent = arrayListOf<String>()
     private var pushToAdapter: List<MessagesData> = emptyList()
     private var adapter = MessagesAdapter(emptyList(),this)
+    private val encryptionClass = Encryption()
     //
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,9 +43,27 @@ class Chat : AppCompatActivity(), MessagesAdapter.onItemClickListener {
         lManager.setReverseLayout(true)
         recyclerView.layoutManager = lManager
         ImageView.setOnClickListener{
-            sendSMS(phoneNumber,EditText.text.toString())
-            EditText.text.clear()
+            if(EditText.text.toString() == "/key"){
+                EditText.text.clear()
+                Toast.makeText(this, "Generating key, please wait...", Toast.LENGTH_LONG).show()
+                val pubKey = "<SmokeSMSkey>"+encryptionClass.createRSA(username)
+                sendSMS(phoneNumber,pubKey)
+                Toast.makeText(this, "Key successfully generated", Toast.LENGTH_SHORT).show()
+            }
+            else{
+                val sharedPreferences = getSharedPreferences("publicKeys", MODE_PRIVATE)
+                val publicKey = sharedPreferences.getString(username,"0")?: "Not Set"
+                if(publicKey=="0"){
+                    Toast.makeText(this, "Error! Public key not set", Toast.LENGTH_SHORT).show()
+                }
+                else{
+                    val msg = encryptionClass.encryptMessage(EditText.text.toString(),publicKey)
+                    sendSMS(phoneNumber,msg)
+                }
+                EditText.text.clear()
+            }
         }
+        backgroundImage()
     }
 
     private fun data(){
@@ -122,15 +144,32 @@ class Chat : AppCompatActivity(), MessagesAdapter.onItemClickListener {
 
     override fun onItemClick(position: Int) {
         val clickedItem = pushToAdapter[position]
-        //clickedItem.msgBody = Base64.encodeToString(clickedItem.msgBody.toByteArray(),0)
-        val Base = Base64.decode(clickedItem.msgBody,0)
-        clickedItem.msgBody = String(Base,Charsets.UTF_8)
-        adapter.notifyItemChanged(position)
+        val sharedPreferences = getSharedPreferences("publicKeys", MODE_PRIVATE)
+        if(clickedItem.msgBody.contains("<SmokeSMSkey>")){
+            val end = clickedItem.msgBody.replace("<SmokeSMSkey>","")
+            val sharedPrefsEditor = sharedPreferences.edit()
+            sharedPrefsEditor.putString(username,end)
+            sharedPrefsEditor.apply()
+            Toast.makeText(this, "Public key successfully added!", Toast.LENGTH_SHORT).show()
+        }
+        else{
+            clickedItem.msgBody = encryptionClass.decryptMessage(clickedItem.msgBody,username)
+            adapter.notifyItemChanged(position)
+        }
     }
 
     private fun sendSMS(number: String, message: String){
-        val msgBase: String = Base64.encodeToString(message.toByteArray(),0)
         val sms = SmsManager.getDefault()
-        sms.sendTextMessage(number,null,msgBase,null,null)
+        val msgParts = sms.divideMessage(message)
+        sms.sendMultipartTextMessage(number,null,msgParts,null,null)
+    }
+    private fun backgroundImage() {
+        val imageView = findViewById<ImageView>(R.id.Background)
+        val folder = File(getFilesDir(),"SmokeSMS")
+        val file = File(folder,"background.jpg")
+        if(file.exists()) {
+            val bitmap: Bitmap = BitmapFactory.decodeStream(FileInputStream(file))
+            imageView.setImageBitmap(bitmap)
+        }
     }
 }

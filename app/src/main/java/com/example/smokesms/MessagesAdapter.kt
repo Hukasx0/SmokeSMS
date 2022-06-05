@@ -3,9 +3,7 @@ package com.example.smokesms
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.AdapterView
 import android.widget.TextView
-import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 
 class MessagesAdapter(private val list_: List<MessagesData>, private val listener: onItemClickListener): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
@@ -66,13 +64,3 @@ class MessagesAdapter(private val list_: List<MessagesData>, private val listene
         fun onItemClick(position: Int)
     }
 }
-/* interface OnItemClickListener{
-       fun onItemClick(){
-
-       }
-   }*/
-/*
-    class ReceiveViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
-        val msgReceiveBody: TextView = itemView.findViewById(R.id.msg_receive_text)
-    }*/
-// val msgSentBody: TextView = itemView.findViewById(R.id.msg_sent_text)

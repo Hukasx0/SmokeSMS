@@ -1,9 +1,9 @@
 <resources>
     <string name="app_name">SmokeSMS</string>
     <string name="settings">Settings</string>
-    <string name="base_alpha">Only base64 is available in alpha version</string>
     <string name="send_encrypted_message">Send encrypted message</string>
-    <string name="tutorial1">Hi! This is SmokeSMS. It looks like you haven\'t started a conversation with this contact, so I\'ll take advantage of this and give you a little tutorial: If you see an encrypted message, just click on it to decrypt it. I left one such message at the bottom</string>
-    <string name="tutorial2">project repository: https://github.com/Hukasx0/SmokeSMS</string>
-    <string name="tutorial3">SGVsbG8sIGhvdyBhcmUgeW91Pw==</string>
+    <string name="tutorial1">Hi! This is SmokeSMS, because you have not started a conversation with this contact, I decided to use it and give you a small guide:</string>
+    <string name="tutorial2">To start a conversation, you and the person you want to chat need to generate a private and public key, just enter \"/key\" in the chat and the keys will be generated. Then all you have to do is click on the public keys sent by each other. To decrypt a message sent by another person, just click on the message</string>
+    <string name="tutorial3">project repository: https://github.com/Hukasx0/SmokeSMS</string>
+    <string name="set_bg_image">set chat background image</string>
 </resources>
