@@ -6,4 +6,13 @@
     <string name="tutorial2">To start a conversation, you and the person you want to chat need to generate a private and public key, just enter \"/key\" in the chat and the keys will be generated. Then all you have to do is click on the public keys sent by each other. To decrypt a message sent by another person, just click on the message</string>
     <string name="tutorial3">project repository: https://github.com/Hukasx0/SmokeSMS</string>
     <string name="set_bg_image">set chat background image</string>
+    <string name="change_password">Change password</string>
+    <string name="create_password">Create 8 character password</string>
+    <string name="type_password">Type your password</string>
+    <string name="generating_key_please_wait">Generating key, please wait</string>
+    <string name="key_successfully_generated">Key successfully generated</string>
+    <string name="public_key_not_set">Error! Public key not set</string>
+    <string name="error_occurred">Error occurred</string>
+    <string name="public_key_added">Public key successfully added!</string>
+    <string name="password_is_incorrect">Invalid password</string>
 </resources>

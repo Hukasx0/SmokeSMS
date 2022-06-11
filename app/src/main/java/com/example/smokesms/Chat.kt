@@ -16,7 +16,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import java.io.File
 import java.io.FileInputStream
-import com.example.smokesms.Encryption as Encryption
+import com.example.smokesms.EncryptionRSA as Encryption
 
 class Chat : AppCompatActivity(), MessagesAdapter.onItemClickListener {
     //
@@ -45,16 +45,16 @@ class Chat : AppCompatActivity(), MessagesAdapter.onItemClickListener {
         ImageView.setOnClickListener{
             if(EditText.text.toString() == "/key"){
                 EditText.text.clear()
-                Toast.makeText(this, "Generating key, please wait...", Toast.LENGTH_LONG).show()
+                Toast.makeText(this, getString(R.string.generating_key_please_wait), Toast.LENGTH_LONG).show()
                 val pubKey = "<SmokeSMSkey>"+encryptionClass.createRSA(username)
                 sendSMS(phoneNumber,pubKey)
-                Toast.makeText(this, "Key successfully generated", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, getString(R.string.key_successfully_generated), Toast.LENGTH_SHORT).show()
             }
             else{
                 val sharedPreferences = getSharedPreferences("publicKeys", MODE_PRIVATE)
                 val publicKey = sharedPreferences.getString(username,"0")?: "Not Set"
-                if(publicKey=="0"){
-                    Toast.makeText(this, "Error! Public key not set", Toast.LENGTH_SHORT).show()
+                if(publicKey=="0" || publicKey == "Not Set"){
+                    Toast.makeText(this, getString(R.string.public_key_not_set), Toast.LENGTH_SHORT).show()
                 }
                 else{
                     val msg = encryptionClass.encryptMessage(EditText.text.toString(),publicKey)
@@ -76,7 +76,7 @@ class Chat : AppCompatActivity(), MessagesAdapter.onItemClickListener {
 
     private fun dataCheck(){
         if(phoneNumber == ""){
-            Toast.makeText(this,"Error occurred", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this,getString(R.string.error_occurred), Toast.LENGTH_SHORT).show()
             startActivity(Intent(this, MainActivity::class.java))
         }
         if(username == ""){
@@ -150,7 +150,7 @@ class Chat : AppCompatActivity(), MessagesAdapter.onItemClickListener {
             val sharedPrefsEditor = sharedPreferences.edit()
             sharedPrefsEditor.putString(username,end)
             sharedPrefsEditor.apply()
-            Toast.makeText(this, "Public key successfully added!", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, getString(R.string.public_key_added), Toast.LENGTH_SHORT).show()
         }
         else{
             clickedItem.msgBody = encryptionClass.decryptMessage(clickedItem.msgBody,username)

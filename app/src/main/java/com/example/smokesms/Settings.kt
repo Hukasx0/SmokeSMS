@@ -17,12 +17,19 @@ class Settings : AppCompatActivity() {
         this.title = getString(R.string.settings)
         val textView = findViewById<TextView>(R.id.textView)
         val link = findViewById<TextView>(R.id.link)
+        val changePass = findViewById<TextView>(R.id.textView4)
         textView.setOnClickListener {
             pickImage()
         }
         link.setOnClickListener {
             val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/Hukasx0/SmokeSMS"))
             startActivity(intent)
+        }
+        changePass.setOnClickListener{
+            val intent = Intent(this@Settings,PinLogin::class.java)
+            intent.putExtra("changingPassword","changePasswordVerify")
+            startActivity(intent)
+            finish()
         }
     }
 

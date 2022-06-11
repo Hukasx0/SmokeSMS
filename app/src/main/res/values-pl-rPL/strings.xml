@@ -7,4 +7,13 @@
     <string name="tutorial2">Aby rozpocząć konwersacje ty wraz z osobą, z którą chcesz chatować musicie wygenerować klucz prywatny i publiczny, wystarczy, że wpiszecie na chatcie konwersacji \"/key\" i klucze zostaną wygenerowane. Następnie wystarczy że klikniecie klucze publiczne wysłane przez siebie nawzajem. Aby odszyfrować wiadomość wysłaną przez drugą osobę wystarczy na nią kliknąć</string>
     <string name="tutorial3">repozytorium projektu: https://github.com/Hukasx0/SmokeSMS</string>
     <string name="set_bg_image">ustaw obraz tła czatu</string>
+    <string name="change_password">Zmień hasło</string>
+    <string name="create_password">"Utwórz 8-znakowe hasło  "</string>
+    <string name="type_password">Wpisz swoje hasło</string>
+    <string name="generating_key_please_wait">Generowanie klucza, proszę czekać</string>
+    <string name="key_successfully_generated">Klucz pomyślnie wygenerowany</string>
+    <string name="public_key_not_set">Błąd! Klucz publiczny nie jest ustawiony</string>
+    <string name="error_occurred">Wystąpił błąd</string>
+    <string name="public_key_added">Pomyślnie dodano klucz publiczny!</string>
+    <string name="password_is_incorrect">Nieprawidłowe hasło</string>
 </resources>

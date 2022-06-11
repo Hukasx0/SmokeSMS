@@ -14,6 +14,7 @@
         <entry key="app/src/main/res/drawable/msg_sent_background.xml" value="0.2425" />
         <entry key="app/src/main/res/layout/activity_chat.xml" value="0.33" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/activity_pin_login.xml" value="0.35260416666666666" />
         <entry key="app/src/main/res/layout/activity_settings.xml" value="0.33" />
         <entry key="app/src/main/res/layout/msg_receive.xml" value="0.23645833333333333" />
         <entry key="app/src/main/res/layout/msg_sent.xml" value="0.23645833333333333" />

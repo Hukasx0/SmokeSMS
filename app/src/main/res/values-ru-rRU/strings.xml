@@ -7,4 +7,13 @@
     <string name="tutorial2">Чтобы начать разговор, вам и человеку, с которым вы хотите пообщаться, необходимо сгенерировать закрытый и открытый ключи, просто введите «/key» в чате, и ключи будут сгенерированы. Тогда все, что вам нужно сделать, это нажать на открытые ключи, отправленные друг другом. Чтобы расшифровать сообщение, отправленное другим человеком, просто нажмите на сообщение</string>
     <string name="tutorial3">репозиторий проекта: https://github.com/Hukasx0/SmokeSMS</string>
     <string name="set_bg_image">установить фоновое изображение чата</string>
+    <string name="change_password">Изменить пароль</string>
+    <string name="create_password">Создать 8-символьный пароль</string>
+    <string name="type_password">Введите свой пароль</string>
+    <string name="generating_key_please_wait">Генерация ключа, подождите</string>
+    <string name="key_successfully_generated">Ключ успешно сгенерирован</string>
+    <string name="public_key_not_set">Ошибка! Открытый ключ не установлен</string>
+    <string name="error_occurred">Возникла ошибка</string>
+    <string name="public_key_added">Открытый ключ успешно добавлен!</string>
+    <string name="password_is_incorrect">Неверный пароль</string>
 </resources>

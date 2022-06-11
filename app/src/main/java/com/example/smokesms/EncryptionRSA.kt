@@ -3,6 +3,7 @@ package com.example.smokesms
 import android.security.keystore.KeyGenParameterSpec
 import android.security.keystore.KeyProperties
 import android.util.Base64
+import java.nio.charset.StandardCharsets
 import java.security.KeyFactory
 import java.security.KeyPairGenerator
 import java.security.KeyStore
@@ -12,7 +13,7 @@ import javax.crypto.Cipher
 // AndroidKeyStore for private keys
         // SharedPreferences for public keys
 
-class Encryption {
+class EncryptionRSA {
 
     private val AndroidKeyStore: String = "AndroidKeyStore"
     fun createRSA(contactNameAlias: String): String {
@@ -33,7 +34,7 @@ class Encryption {
         val PublicKey = fact.generatePublic(spec)
         val cipher = Cipher.getInstance("RSA/ECB/PKCS1Padding")
         cipher.init(Cipher.ENCRYPT_MODE, PublicKey)
-        return Base64.encodeToString(cipher.doFinal(plainText.toByteArray()),0).toString()
+        return Base64.encodeToString(cipher.doFinal(plainText.toByteArray(StandardCharsets.UTF_8)),0).toString()
     }
     fun decryptMessage(encryptedText: String, alias: String): String{
         val androidKeyStore = KeyStore.getInstance(AndroidKeyStore)
@@ -41,6 +42,6 @@ class Encryption {
         val privateKey  = androidKeyStore.getKey(alias,null)
         val cipher = Cipher.getInstance("RSA/ECB/PKCS1Padding")
         cipher.init(Cipher.DECRYPT_MODE, privateKey)
-        return String(cipher.doFinal(Base64.decode(encryptedText.toByteArray(),0),))
+        return String(cipher.doFinal(Base64.decode(encryptedText.toByteArray(StandardCharsets.UTF_8),0),))
     }
 }
